@@ -4,22 +4,10 @@ const app = express()
 
 
 let demoLogger = (req, res, next) => {
-  let current_datetime = new Date()
-  let formatted_date =
-    current_datetime.getFullYear() +
-    "-" +
-    (current_datetime.getMonth() + 1) +
-    "-" +
-    current_datetime.getDate() +
-    " " +
-    current_datetime.getHours() +
-    ":" +
-    current_datetime.getMinutes() +
-    ":" +
-    current_datetime.getSeconds()
+  let formattedData = new Date().toLocaleString()
   let method = req.method;
   let url = req.url
-  let log = `[${formatted_date}] | ${method} from ${url} `
+  let log = `[${formattedData}] | ${method} from ${url} `
   console.log(log)
   next()
 };
